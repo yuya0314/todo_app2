@@ -2,17 +2,17 @@ require 'test_helper'
 
 class PostControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get post_index_url
+    get root_path
     assert_response :success
   end
 
   test "should get new" do
-    get post_new_url
+    get new_path
     assert_response :success
   end
 
   test "should get show" do
-    get post_show_url
+    get show_path
     assert_response :success
   end
 
