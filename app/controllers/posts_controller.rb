@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      lash[:success] = "編集しました"
+      flash[:success] = "編集しました"
       redirect_to("/")
     else
       render 'edit'

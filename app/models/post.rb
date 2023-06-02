@@ -5,9 +5,11 @@ class Post < ApplicationRecord
   validates :finish, presence: true
   validate  :start_end_check
 
-  def start_end_check
-    errors.add(:error, "終了日は、開始日以降の日付としてください。") unless
-    self.start <= self.finish
-  end
 
+  def start_end_check
+    return false if start.blank? || finish.blank?
+    if self.finish <= self.start
+      errors.add(:error, "終了日は、開始日以降の日付としてください。")
+    end
+  end
 end
