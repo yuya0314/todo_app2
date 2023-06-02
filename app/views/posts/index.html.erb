@@ -1,0 +1,35 @@
+<% provide(:title, "投稿一覧") %>
+<div class="pagetitle d-flex  justify-content-between">
+ <h3>予定一覧</h3>
+  <%= link_to "新規追加",  new_post_path ,class: "btn btn-primary" %>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <td> ID</td>
+      <td> タイトル</td>
+      <td> 開始日</td>
+      <td> 終了日</td>
+      <td> 終日</td>
+      <td> 更新日時</td>
+      <td colspan ="3"></td>
+    </tr>
+  </thead>
+  <% @posts.each do |post| %>
+    <tr>
+      <td> <%= post.id %>　</td>
+      <td> <%=post.title %> </td>
+      <td> <%=post.start.strftime("%Y/%m/%d") %> </td>
+      <td> <%=post.finish.strftime("%Y/%m/%d") %> </td>
+      <td> <% if post.alltime == 1 %> <%= "○" %> <% end %> </td>
+      <td> <%=post.updated_at.strftime("%Y/%m/%d %R") %> </td>
+      <td> <%=link_to("詳細","/posts/#{post.id}") %> </td>
+      <td> <%=link_to("編集","/posts/#{post.id}/edit") %> </td>
+      <td> <%=link_to("削除","/posts/#{post.id}",method: :delete,data: { confirm: "本当に削除しますか？"}) %> </td>
+    </tr>
+  <% end %>
+</table>
+<footer  class="d-flex justify-content-between bg-light ">
+  <p>予定合計 <%=@posts.count%>件</p>
+  <p class="small">本日の日付 <%=Date.today.strftime("%Y/%m/%d") %></p>
+</footer>

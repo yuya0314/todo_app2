@@ -1,0 +1,38 @@
+<div class="post_content">
+  <div class="d-flex  justify-content-between">
+    <%=link_to "編集","/posts/#{@post.id}/edit",class: "btn btn-primary" %>
+    <%=link_to("一覧に戻る","/") %>
+  </div>
+  <table class="table">
+    <tr>
+      <th class="table-light">タイトル</th>
+    </tr>
+    <tr>
+      <td><%=@post.title%></td>
+    </tr>
+    <tr>
+      <th class="table-light">開始日</th>
+    </tr>
+    <tr>
+      <td><%=@post.start.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+      <th class="table-light">終了日</th>
+    </tr>
+    <tr>
+      <td><%=@post.finish.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+      <th class="table-light">終日</th>
+    </tr>
+    <tr>
+      <td><% if @post.alltime == 1 %> <%= "○" %> <% end %></td>
+    </tr>
+    <tr>
+      <th class="table-light">スケジュールメモ</th>
+    </tr>
+    <tr>
+      <td><%=@post.memo %></td>
+    </tr>
+  </table>
+</div>
